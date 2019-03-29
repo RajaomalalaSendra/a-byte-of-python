@@ -41,6 +41,9 @@ print("\nRobots can do some work here.\n")
 print("Robots have finished their work. So let's destroy them.")
 # Kill the two robots
 droid1.die()
+print("*"*10)
+droid1.say_hi()
+print("*"*10)
 droid2.die()
 # Count all the robot inside the Robot class
 Robot.how_many()
@@ -59,8 +62,11 @@ class Input:
 	def change(self):
 		self.name = input("You want to change your name: ")
 		self.surname = input("You want to change your surname: ")
-		self.age = int(input("You want to change your age: "))
-		print("Your statut has been successfully change.\nAs: {} {} is  {:d} years old.".format(self.name, self.surname, self.age))
+		self.age = input("You want to change your age: ")
+		try:
+			print("Your statut has been successfully change.\nAs: {} {} is  {:d} years old.".format(self.name, self.surname, int(self.age)))
+		except ValueError:
+			print("Not that because age is an integer.")
 	def delete(self):
 		print("The user {} {} has been deleted.".format(self.name, self.surname))
 		Input.user_count -= 1
