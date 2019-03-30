@@ -9,10 +9,12 @@ class SchoolMember:
 		print ('Name:"{}" Age:"{}"'.format(self.name, self.age))
 class Teacher(SchoolMember):
 	'''Represents a teacher.'''
-	def __init__(self, name, age, salary):
+	def __init__(self, name, age, salary, position, adress):
 		SchoolMember.__init__(self, name, age)
 		self.salary = salary
-		print ('(Initialized Teacher: {})'.format(self.name))
+		self.position = position
+		self.adress = adress
+		print ('(Initialized Teacher: {} {} {})'.format(self.name, self.position, self.adress))
 	def tell(self):
 		SchoolMember.tell(self)
 		print ('Salary: "{:d}"'.format(self.salary))
@@ -26,7 +28,7 @@ class Student(SchoolMember):
 	def tell(self):
 		SchoolMember.tell(self)
 		print ('Marks: "{:d}"'.format(self.marks))
-t = Teacher('Mrs. Shrividya', 40, 30000)
+t = Teacher('Mrs. Shrividya', 40, 30000, "Teacher of Science", "Ambolokandrina")
 s = Student('Swaroop', 25, 75)
 # prints a blank line
 print
