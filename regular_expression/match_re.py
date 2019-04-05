@@ -6,22 +6,19 @@ regexes = [
     re.compile(p)
     for p in word.split(" ")
 ]
-lister = list()
+lister = set()
 
 try:
-	with open('text.txt') as text:
+	with open('genesisy.txt') as text:
 		for t in text:
-			lister.append(t)
+			lister.add(t)
 except IOError:
 	print("Cannot import that text.")
 text = " ".join(lister)
-
-print('Text: {!r}\n'.format(text))
-
 for regex in regexes:
     print('Seeking "{}" ->'.format(regex.pattern),
           end=' ')
     if regex.search(text):
-        print('match!')
+        print('it is really a malagasy word!')
     else:
-        print('no match')
+        print('it is not a malagasy word!')
