@@ -13,16 +13,19 @@ class Goods:
 		self.caracteristics = arg[1]
 		self.description = arg[2]
 		self.quantity = int(arg[3])
+		self.price = int(arg[4])
 		print("(♯ The goods: {} has been created successfully.)".format(self.goods_name))
 	def buy(self):
-		print("(→ You have bought: {:d} quantity of {}.)".format(self.quantity, self.goods_name))
+		total = self.quantity * self.price
+		print("(→ You have bought: {:d} quantity of {}. The price is {:d} and the total is: {}.)".format(self.quantity, self.goods_name, self.price, total))
 	def sell(self):
-		print("(→ You have sold: {:d} quantity of {}.".format(self.quantity, self.goods_name))
+		total = self.quantity * self.price
+		print("(→ You have sold: {:d} quantity of {}. The price is {:d} and the total is: {}.)".format(self.quantity, self.goods_name, self.price, total))
 class Buyer(Person, Goods):
 	"""Creation of the new person and new goods inside of our app."""
 	def __init__(self, *arg):
 		Person.__init__(self, arg[0], arg[1], arg[2])
-		Goods.__init__(self, arg[3], arg[4], arg[5], arg[6])
+		Goods.__init__(self, arg[3], arg[4], arg[5], arg[6], arg[7])
 		print("(♯ Buyer successfully created)")
 	def buy(self):
 		Goods.buy(self)
@@ -30,9 +33,11 @@ class Seller(Person, Goods):
 	"""Creation of the new person and new goods inside of our app."""
 	def __init__(self, *arg):
 		Person.__init__(self, arg[0], arg[1], arg[2])
-		Goods.__init__(self, arg[3], arg[4], arg[5], arg[6])
+		Goods.__init__(self, arg[3], arg[4], arg[5], arg[6], arg[7])
 		print("(♯ Seller successfully created)")
 	def sell(self):
 		Goods.sell(self)
-buyer = Buyer("Sendra", "Malala", 24, "Apple", "round and red", "This is a red and round apple from Antsirabe",10)
+buyer = Buyer("Sendra", "Malala", 24, "Apple", "round and red", "This is a red and round apple from Antsirabe", 10, 1200)
 buyer.buy()
+seller = Seller("Tiana", "Rawell", 29, "Apple", "round and red", "This is a red and round apple from Antsirabe", 10, 1200)
+seller.sell()
